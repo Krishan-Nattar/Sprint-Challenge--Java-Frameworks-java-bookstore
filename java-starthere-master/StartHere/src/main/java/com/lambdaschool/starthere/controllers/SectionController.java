@@ -24,6 +24,7 @@ public class SectionController {
     @Autowired
     private SectionService sectionService;
 
+    //   http://localhost:2019/sections/sections
     @ApiOperation(value = "return all sections using paging and sorting", response = Section.class, responseContainer = "List")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "page", dataType = "integer", paramType = "query", value = "Results page you want to retrieve(0..n)"),//these are all just text fields printed. They can be anything

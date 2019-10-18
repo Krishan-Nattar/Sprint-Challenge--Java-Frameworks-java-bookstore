@@ -26,7 +26,7 @@ public class AuthorController {
     @Autowired
     private AuthorService authorService;
 
-    //    GET /authors/authors - returns a JSON object list of all the books, thier sections, and their authors.
+    //   http://localhost:2019/authors/authors
     @ApiOperation(value="Return all authors using paging and sorting", response = Book.class, responseContainer = "List")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "page", dataType = "integer", paramType = "query", value = "Results page you want to retrieve(0..n)"),//these are all just text fields printed. They can be anything

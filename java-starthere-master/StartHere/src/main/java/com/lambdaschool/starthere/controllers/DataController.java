@@ -38,12 +38,12 @@ public class DataController {
             @RequestBody
                     Book updateBook,
             @PathVariable
-                    long id, HttpServletRequest request)
-    {
+                    long id, HttpServletRequest request) {
         bookService.update(updateBook, id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    //   http://localhost:2019/data/sections/{id}
     @ApiOperation(value = "Updates section details", response = void.class)
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Section updated successfully", response = void.class),
@@ -54,12 +54,12 @@ public class DataController {
             @RequestBody
                     Section updateSection,
             @PathVariable
-                    long id, HttpServletRequest request)
-    {
+                    long id, HttpServletRequest request) {
         sectionService.update(updateSection, id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    //   http://localhost:2019/data/books/{bookid}/authors/{authorid}
     @ApiOperation(value = "Assign a book to an author", response = void.class)
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Book assigned Successfully", response = void.class),
@@ -70,12 +70,12 @@ public class DataController {
             produces = {"application/json"})
     public ResponseEntity<?> assignBookToAuthor(@ApiParam(value = "Book Id", required = true, example = "1")
                                                 @PathVariable long bookid, @ApiParam(value = "Author Id", required = true, example = "1")
-                                                @PathVariable long authorid, HttpServletRequest request) throws URISyntaxException
-    {
+                                                @PathVariable long authorid, HttpServletRequest request) throws URISyntaxException {
         bookService.assignBookToAuthor(bookid, authorid);
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
+    //   http://localhost:2019/data/books/{bookid}
     @ApiOperation(value = "Delete a book", notes = "The book id entered will be deleted", response = void.class)
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Book deleted successfully", response = void.class),
@@ -83,8 +83,7 @@ public class DataController {
     })
     @DeleteMapping("/books/{bookid}")
     public ResponseEntity<?> deleteBookById(@ApiParam(value = "Book Id", required = true, example = "1")
-                                            @PathVariable long bookid, HttpServletRequest request)
-    {
+                                            @PathVariable long bookid, HttpServletRequest request) {
         bookService.delete(bookid);
         return new ResponseEntity<>(HttpStatus.OK);
     }

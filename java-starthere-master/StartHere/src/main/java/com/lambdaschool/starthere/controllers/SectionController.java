@@ -24,7 +24,7 @@ public class SectionController {
     @Autowired
     private SectionService sectionService;
 
-    @ApiOperation(value="return all sections using paging and sorting", response = Section.class, responseContainer = "List")
+    @ApiOperation(value = "return all sections using paging and sorting", response = Section.class, responseContainer = "List")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "page", dataType = "integer", paramType = "query", value = "Results page you want to retrieve(0..n)"),//these are all just text fields printed. They can be anything
             @ApiImplicitParam(name = "size", dataType = "integer", paramType = "query", value = "Number of records per page"),
@@ -33,8 +33,7 @@ public class SectionController {
                     "Multiple sort criteria are supported.")
     })
     @GetMapping(value = "/sections", produces = {"application/json"})
-    public ResponseEntity<?> listAllSections(@PageableDefault(page = 0,size=3) Pageable pageable, HttpServletRequest request)
-    {
+    public ResponseEntity<?> listAllSections(@PageableDefault(page = 0, size = 3) Pageable pageable, HttpServletRequest request) {
         ArrayList<Section> mySections = sectionService.findAll(pageable);
         return new ResponseEntity<>(mySections, HttpStatus.OK);
     }

@@ -15,7 +15,6 @@ import java.util.ArrayList;
 @Service(value = "bookService")
 public class BookServiceImplementation implements BookService{
 
-
     @Autowired
     private BookRepository bookRepos;
 
@@ -58,7 +57,6 @@ public class BookServiceImplementation implements BookService{
         Author currentAuthor = authorRepos.findById(authorid)
                 .orElseThrow(() -> new ResourceNotFoundException(Long.toString(authorid)));
 
-        //
         for(Wrote w: currentAuthor.getwrote())
         {
             if(w.getBook().getBookid() == bookid)

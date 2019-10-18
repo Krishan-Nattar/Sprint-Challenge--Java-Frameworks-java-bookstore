@@ -2,7 +2,9 @@ package com.lambdaschool.starthere.controllers;
 
 import com.lambdaschool.starthere.models.Book;
 import com.lambdaschool.starthere.models.ErrorDetail;
+import com.lambdaschool.starthere.models.Section;
 import com.lambdaschool.starthere.services.BookService;
+import com.lambdaschool.starthere.services.SectionService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
@@ -22,19 +24,39 @@ public class DataController {
     @Autowired
     private BookService bookService;
 
+    @Autowired
+    private SectionService sectionService;
+
+    //   http://localhost:2019/data/books/{id}
     @ApiOperation(value = "Updates book details", response = void.class)
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Book updated successfully", response = void.class),
             @ApiResponse(code = 500, message = "Error updating book", response = ErrorDetail.class)
     })
     @PutMapping(value = "/books/{id}")
-    public ResponseEntity<?> updateStudent(
+    public ResponseEntity<?> updateBook(
             @RequestBody
                     Book updateBook,
             @PathVariable
                     long id, HttpServletRequest request)
     {
         bookService.update(updateBook, id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "Updates section details", response = void.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Section updated successfully", response = void.class),
+            @ApiResponse(code = 500, message = "Error updating section", response = ErrorDetail.class)
+    })
+    @PutMapping(value = "/sections/{id}")
+    public ResponseEntity<?> updateSection(
+            @RequestBody
+                    Section updateSection,
+            @PathVariable
+                    long id, HttpServletRequest request)
+    {
+        sectionService.update(updateSection, id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

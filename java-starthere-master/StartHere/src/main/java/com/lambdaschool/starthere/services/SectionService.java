@@ -7,4 +7,6 @@ import java.util.ArrayList;
 
 public interface SectionService {
     ArrayList<Section> findAll(Pageable pageable);
+
+    Section update(Section section, long id);
 }

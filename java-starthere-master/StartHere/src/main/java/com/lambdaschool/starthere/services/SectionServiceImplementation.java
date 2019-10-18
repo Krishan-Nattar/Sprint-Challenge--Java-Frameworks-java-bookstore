@@ -1,5 +1,6 @@
 package com.lambdaschool.starthere.services;
 
+import com.lambdaschool.starthere.exceptions.ResourceNotFoundException;
 import com.lambdaschool.starthere.models.Book;
 import com.lambdaschool.starthere.models.Section;
 import com.lambdaschool.starthere.repository.SectionRepository;
@@ -21,4 +22,19 @@ public class SectionServiceImplementation implements SectionService {
         sectionRepos.findAll(pageable).iterator().forEachRemaining(list::add);
         return list;
     }
+
+    @Override
+    public Section update(Section section, long id) {
+        Section currentSection = sectionRepos.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(Long.toString(id)));
+
+        if (section.getName() != null)
+        {
+            currentSection.setName(section.getName());
+        }
+
+        return sectionRepos.save(currentSection);
+    }
+
+
 }

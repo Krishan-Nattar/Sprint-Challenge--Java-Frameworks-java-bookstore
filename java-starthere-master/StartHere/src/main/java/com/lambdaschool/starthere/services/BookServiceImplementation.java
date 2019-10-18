@@ -50,7 +50,6 @@ public class BookServiceImplementation implements BookService{
         return bookRepos.save(currentBook);
     }
 
-
     @Override
     public void assignBookToAuthor(long bookid, long authorid) {
         Book currentBook = bookRepos.findById(bookid)
@@ -69,7 +68,6 @@ public class BookServiceImplementation implements BookService{
         }
         bookRepos.assignBookToAuthor(bookid, authorid);
     }
-
 
     @Override
     public void delete(long id) {

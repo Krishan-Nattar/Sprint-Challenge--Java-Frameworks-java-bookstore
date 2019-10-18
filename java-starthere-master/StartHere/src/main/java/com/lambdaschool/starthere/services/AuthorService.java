@@ -8,4 +8,5 @@ import java.util.ArrayList;
 
 public interface AuthorService {
     ArrayList<Author> findAll(Pageable pageable);
+
 }

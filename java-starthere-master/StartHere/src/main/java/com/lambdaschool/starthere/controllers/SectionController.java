@@ -37,4 +37,8 @@ public class SectionController {
         ArrayList<Section> mySections = sectionService.findAll(pageable);
         return new ResponseEntity<>(mySections, HttpStatus.OK);
     }
+
+
+
+    
 }

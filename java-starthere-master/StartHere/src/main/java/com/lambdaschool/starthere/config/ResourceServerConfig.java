@@ -42,8 +42,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter
                          "/logout")
             .authenticated()
             // restrict application data...
-            // .antMatchers("/books", "/authors").hasAnyRole("ADMIN", "USER", "DATA")
-            // .antMatchers("/data/**").hasAnyRole("ADMIN", "DATA")
+                .antMatchers("/books/**", "/authors/**", "/sections/**").hasAnyRole("ADMIN", "USER", "DATA")
+                .antMatchers("/data/**").hasAnyRole("ADMIN", "DATA")
+                .antMatchers("/users/**", "useremails/**").hasAnyRole("ADMIN")
             //
             // restrict based on HttpMethod and endpoint
             // .antMatchers(HttpMethod.GET, "/users/user/**").hasAnyRole("USER")
